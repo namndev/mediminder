@@ -13,7 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  
   @override
   void initState() {
     super.initState();
@@ -114,7 +113,7 @@ class TopContainer extends StatelessWidget {
             stream: globalBloc.medicineList$,
             builder: (context, snapshot) {
               return Padding(
-                padding: const EdgeInsets.only(top: 16.0, bottom: 5 ),
+                padding: const EdgeInsets.only(top: 16.0, bottom: 5),
                 child: Center(
                   child: Text(
                     snapshot.data?.length.toString() ?? '0',
@@ -136,8 +135,7 @@ class TopContainer extends StatelessWidget {
 }
 
 class BottomContainer extends StatelessWidget {
-
-  const BottomContainer({Key? key}): super(key: key);
+  const BottomContainer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -149,22 +147,22 @@ class BottomContainer extends StatelessWidget {
           return Container();
         } else if (snapshot.data!.isEmpty) {
           return Center(
-              child: Text(
-                "press_add_mediminer".trans(),
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                    fontSize: 20,
-                    color: Color(0xFFC9C9C9),
-                    fontWeight: FontWeight.bold),
-              ),
-            );
+            child: Text(
+              "press_add_mediminer".trans(),
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                  fontSize: 20,
+                  color: Color(0xFFC9C9C9),
+                  fontWeight: FontWeight.bold),
+            ),
+          );
         } else {
-          return  Container(
+          return Container(
             color: const Color(0xFFF6F8FC),
             child: GridView.builder(
               padding: const EdgeInsets.only(top: 12),
-              gridDelegate:
-                  const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2),
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 return MedicineCard(snapshot.data![index]);
@@ -181,9 +179,9 @@ class BottomContainer extends StatelessWidget {
 class MedicineCard extends StatelessWidget {
   final Medicine medicine;
 
-  const MedicineCard(this.medicine, {Key? key}):super(key: key);
+  const MedicineCard(this.medicine, {Key? key}) : super(key: key);
 
-  Hero makeIcon(double size) =>  Hero(
+  Hero makeIcon(double size) => Hero(
         tag: medicine.getTag,
         child: Icon(
           medicine.getIconData,
